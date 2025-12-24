@@ -61,18 +61,20 @@ Edit `.env`:
 ```env
 # Application
 NODE_ENV=development
-PORT=3000
+DEBUG = false
+PORT=5000
 
-# Database
-DB_HOST=db
+DB_HOST=mysql
 DB_PORT=3306
 DB_NAME=notes_db
-DB_USER=root
-DB_PASSWORD=root
+DB_USER=notes_user
+DB_PASSWORD=notes_pass
 
-# JWT Secrets (⚠️ Change in production!)
-JWT_SECRET=your_secure_jwt_secret_here
-JWT_REFRESH_SECRET=your_secure_refresh_secret_here
+REDIS_HOST=redis
+REDIS_PORT=6379
+
+JWT_ACCESS_SECRET=supersecretaccess
+JWT_REFRESH_SECRET=supersecretrefresh
 JWT_EXPIRES_IN=15m
 JWT_REFRESH_EXPIRES_IN=7d
 ```
@@ -245,4 +247,5 @@ This project is licensed under the MIT License.
 ---
 
 **Built with ❤️ using Node.js and Docker**
+
 
