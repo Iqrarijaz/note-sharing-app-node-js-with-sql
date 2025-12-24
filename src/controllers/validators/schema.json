@@ -1,0 +1,112 @@
+{
+    "USER_REGISTRATION_SCHEMA": {
+        "title": "User Registration",
+        "description": "Schema for user registration",
+        "type": "object",
+        "required": [
+            "name",
+            "email",
+            "password"
+        ],
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "email": {
+                "type": "string",
+                "format": "email"
+            },
+            "password": {
+                "type": "string",
+                "minLength": 6
+            }
+        },
+        "additionalProperties": false
+    },
+    "USER_LOGIN_SCHEMA": {
+        "title": "User Login",
+        "description": "Schema for user login",
+        "type": "object",
+        "required": [
+            "email",
+            "password"
+        ],
+        "properties": {
+            "email": {
+                "type": "string",
+                "format": "email"
+            },
+            "password": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false
+    },
+    "CREATE_NOTE_SCHEMA": {
+        "title": "Create Note",
+        "description": "Schema for creating a note",
+        "type": "object",
+        "required": [
+            "title",
+            "content"
+        ],
+        "properties": {
+            "title": {
+                "type": "string",
+                "minLength": 1
+            },
+            "content": {
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "additionalProperties": false
+    },
+    "UPDATE_NOTE_SCHEMA": {
+        "title": "Update Note",
+        "description": "Schema for updating a note with optimistic locking",
+        "type": "object",
+        "required": [
+            "title",
+            "content"
+        ],
+        "properties": {
+            "title": {
+                "type": "string"
+            },
+            "content": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false
+    },
+    "SHARE_NOTE_SCHEMA": {
+        "title": "Share Note",
+        "description": "Schema for sharing a note with a user",
+        "type": "object",
+        "required": [
+            "noteId",
+            "sharedWithId",
+            "permission"
+        ],
+        "properties": {
+            "noteId": {
+                "type": "string",
+                "description": "ID of the note to be shared"
+            },
+            "sharedWithId": {
+                "type": "number",
+                "description": "User ID with whom the note is being shared"
+            },
+            "permission": {
+                "type": "string",
+                "enum": [
+                    "read",
+                    "edit"
+                ],
+                "description": "Permission type for the shared note"
+            }
+        },
+        "additionalProperties": false
+    }
+}
