@@ -48,7 +48,7 @@ note-sharing-app/
 ### 1. Clone & Configure
 ```bash
 # Clone repository
-git clone <repository-url>
+git clone git@github.com:Iqrarijaz/note-sharing-app-node-js-with-sql.git
 cd note-sharing-app-node-js-with-sql
 
 # Create environment file
@@ -245,3 +245,4 @@ This project is licensed under the MIT License.
 ---
 
 **Built with ❤️ using Node.js and Docker**
+
