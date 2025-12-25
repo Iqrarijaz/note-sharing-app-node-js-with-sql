@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   api:
-    container_name: note_api
+    container_name: note_app_api
     build: .
     ports:
       - "5000:5000"
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   mysql:
-    container_name: note_mysql
+    container_name: note_app_mysql
     image: mysql:8.0
     ports:
       - "3306:3306"
@@ -27,15 +27,15 @@ services:
       MYSQL_USER: notes_user
       MYSQL_PASSWORD: notes_pass
     volumes:
-      - mysql_data:/var/lib/mysql
+      - note_app_mysql_data:/var/lib/mysql
     restart: unless-stopped
 
   redis:
-    container_name: note_redis
+    container_name: note_app_redis
     image: redis:7
     ports:
       - "6379:6379"
     restart: unless-stopped
 
 volumes:
-  mysql_data:
+  note_app_mysql_data:
