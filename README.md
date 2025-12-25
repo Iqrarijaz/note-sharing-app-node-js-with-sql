@@ -221,31 +221,11 @@ npm run dev
 
 ---
 
-## 🤝 Contributing
-
-Contributions welcome! Please:
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing`)
-5. Open Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
 ## 💬 Support
 
-- 📧 **Issues:** [GitHub Issues](link-to-issues)
 - 📖 **Documentation:** http://localhost:3000/docs
-- 💡 **Discussions:** [GitHub Discussions](link-to-discussions)
-
+  
 ---
 
-**Built with ❤️ using Node.js and Docker**
 
 
