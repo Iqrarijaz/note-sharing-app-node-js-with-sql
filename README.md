@@ -11,7 +11,7 @@ A secure REST API for collaborative note-taking built with **Node.js**, **Expres
 - 🕒 **Version History** tracking
 - 🤝 **Secure Note Sharing** between users
 - 🐳 **Docker-Ready** for easy deployment
-- 📚 **Interactive API Docs** with Swagger
+- 📚 **Interactive API Docs** with Swagger ,Technical Analysis Document.docx
 
 ---
 
@@ -21,7 +21,7 @@ A secure REST API for collaborative note-taking built with **Node.js**, **Expres
 **Database:** MySQL with Sequelize ORM  
 **Auth:** JWT (Access + Refresh Tokens)  
 **DevOps:** Docker, Docker Compose  
-**Docs:** OpenAPI (Swagger)
+**Docs:** OpenAPI (Swagger) , Technical Analysis Document.docx
 
 ---
 
@@ -38,6 +38,7 @@ note-sharing-app/
 ├── docker-compose.yml
 ├── Dockerfile
 ├── .env.example
+├── Technical Analysis Document.docx
 └── package.json
 ```
 
@@ -226,6 +227,7 @@ npm run dev
 - 📖 **Documentation:** http://localhost:3000/docs
   
 ---
+
 
 
 
