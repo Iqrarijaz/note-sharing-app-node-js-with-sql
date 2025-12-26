@@ -148,40 +148,69 @@ async function searchNotes(userId, keyword) {
 }
 
 /**
- * Update note with optimistic locking + version history
+ * Update note with optimistic locking + version history + last editor
  */
 async function updateNote(userId, noteId, title, content) {
     const FUNCTION_NAME = "noteService.updateNote";
     const transaction = await sequelize.transaction();
 
     try {
-        const note = await Note.findOne({
-            where: { id: noteId, userId },
-            transaction
-        });
+        const note = await Note.findByPk(noteId, { transaction });
+        if (!note) {
+            throw new Error("Note not found");
+        }
 
-        if (!note) throw new Error("Note not found");
+        // Permission check
+        let canEdit = false;
 
+        if (note.userId === userId) {
+            // Owner can always edit
+            canEdit = true;
+        } else {
+            // Shared user must have edit permission
+            const shared = await NoteShare.findOne({
+                where: {
+                    noteId,
+                    sharedWithUserId: userId,
+                    permission: "edit"
+                },
+                transaction
+            });
+
+            if (shared) canEdit = true;
+        }
+
+        if (!canEdit) {
+            throw new Error("You do not have permission to edit this note");
+        }
+
+        // Store previous version
         await NoteVersion.create(
             {
                 noteId: note.id,
                 title: note.title,
                 content: note.content,
-                version: note.version
+                version: note.version,
+                updatedBy: userId 
             },
             { transaction }
         );
 
+        // Apply update
         note.title = title;
         note.content = content;
-
+        note.updatedBy = userId; 
         await note.save({ transaction });
+
         await transaction.commit();
 
+        // Cache invalidation
         await deleteCache(`note:${noteId}`);
-        await deleteCache(`notes:user:${userId}`);
+        await deleteCache(`notes:user:${note.userId}`);
+        await deleteCache(`notes:shared:${userId}`);
 
         return note;
+
     } catch (error) {
         await transaction.rollback();
 
@@ -196,9 +225,11 @@ async function updateNote(userId, noteId, title, content) {
             noteId,
             error
         });
+
         throw error;
     }
 }
+
 
 /**
  * Soft delete note

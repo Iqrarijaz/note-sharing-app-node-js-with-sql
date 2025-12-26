@@ -11,7 +11,11 @@ const Note = sequelize.define(
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false // owner
+    },
+    updatedBy: {
+      type: DataTypes.INTEGER,
+      allowNull: true // last editor
     },
     title: {
       type: DataTypes.STRING,
@@ -30,11 +34,17 @@ const Note = sequelize.define(
   {
     tableName: "notes",
     timestamps: true,
-    paranoid: true, // for soft delete
-    version: true, // for version control
+    paranoid: true,
+    version: true,
     indexes: [
       { fields: ["userId"] },
-      { fields: ["updatedAt"] }
+      { fields: ["updatedBy"] },
+      { fields: ["updatedAt"] },
+      {
+        type: "FULLTEXT",
+        name: "ft_notes_title_content",
+        fields: ["title", "content"]
+      }
     ]
   }
 );

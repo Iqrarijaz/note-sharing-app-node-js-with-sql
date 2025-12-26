@@ -4,6 +4,7 @@ const User = require("./User");
 const Note = require("./Note");
 const NoteVersion = require("./NoteVersion");
 const NoteShare = require("./NoteShare")
+
 // Associations
 User.hasMany(Note, { foreignKey: "userId" });
 Note.belongsTo(User, { foreignKey: "userId" });
