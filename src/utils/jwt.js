@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 function generateAccessToken(payload) {
   return jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || "1500m"
+    expiresIn: process.env.JWT_EXPIRES_IN || "15m"
   });
 }
 
