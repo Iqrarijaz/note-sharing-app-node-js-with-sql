@@ -99,8 +99,8 @@ docker compose up
 
 | Service | URL |
 |---------|-----|
-| **API Base** | http://localhost:3000 |
-| **Swagger Docs** | http://localhost:3000/docs |
+| **API Base** | http://localhost:5000 |
+| **Swagger Docs** | http://localhost:5000/docs |
 
 ---
 
@@ -114,7 +114,7 @@ docker compose up
 
 **Example Request:**
 ```bash
-curl -H "Authorization: Bearer eyJhbGc..." http://localhost:3000/notes
+curl -H "Authorization: Bearer eyJhbGc..." http://localhost:5000/notes
 ```
 
 ---
@@ -170,7 +170,7 @@ docker compose exec app sh
 ## 🧪 Testing the API
 
 ### Using Swagger UI
-1. Navigate to http://localhost:3000/docs
+1. Navigate to http://localhost:5000/docs
 2. Click **"Authorize"** button
 3. Enter JWT token: `Bearer <your_token>`
 4. Test endpoints directly in browser
@@ -178,12 +178,12 @@ docker compose exec app sh
 ### Using cURL
 ```bash
 # Register
-curl -X POST http://localhost:3000/auth/register \
+curl -X POST http://localhost:5000/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"secure123"}'
 
 # Create Note
-curl -X POST http://localhost:3000/notes \
+curl -X POST http://localhost:5000/notes \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"title":"My Note","content":"Hello World"}'
@@ -224,9 +224,10 @@ npm run dev
 
 ## 💬 Support
 
-- 📖 **Documentation:** http://localhost:3000/docs
+- 📖 **Documentation:** http://localhost:5000/docs
   
 ---
+
 
 
 
