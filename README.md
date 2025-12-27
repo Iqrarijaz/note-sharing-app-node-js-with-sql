@@ -39,6 +39,7 @@ note-sharing-app/
 ├── Dockerfile
 ├── .env.example
 ├── Technical Analysis Document.docx
+├── postman_collection.json
 └── package.json
 ```
 
@@ -227,6 +228,7 @@ npm run dev
 - 📖 **Documentation:** http://localhost:5000/docs
   
 ---
+
 
 
 
