@@ -34,6 +34,7 @@ const options = {
         "./src/routes/*.js",
         "./src/controllers/*.js",
     ]
+    
 };
 
 module.exports = swaggerJsdoc(options);
